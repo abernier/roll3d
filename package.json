@@ -1,0 +1,14 @@
+{
+  "author": "",
+  "name": "roll",
+  "version": "0.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "hem": "0.1.x",
+    "nib": "0.5.x"
+  },
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}

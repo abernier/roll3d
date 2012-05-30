@@ -1,0 +1,75 @@
+@import '../node_modules/nib/lib/nib/reset'
+@import '../node_modules/nib/lib/nib/vendor'
+
+roll3d(
+  dir = x
+  a = 1.5em
+  n = 10
+  backface = visible
+)
+  reset-box-model()
+
+  display inline-block
+
+  transform-style preserve-3d
+
+  > *
+    display block
+
+    backface-visibility backface
+
+  if (dir is x)
+    roll3d-x(a, n)
+  if (dir is y)
+    roll3d-y(a, n)
+
+tan(theta)
+  sin(theta) / cos(theta)
+
+r(i, n)
+  360deg * i / n
+t(a, n)
+  (a/2) / tan(PI/n)
+
+roll3d-x(h, n)
+  height h
+
+  > *
+    height h
+    line-height h
+
+    margin-bottom -(h)
+
+    &:last-child
+      margin-bottom 0
+
+    for i in 0...n
+      &:nth-child({i+1})
+        transform rotateX(r(i, n)) translateZ(t(h, n))
+
+roll3d-y(w, n)
+  width w
+
+  white-space nowrap
+  letter-spacing -.25em
+
+  > *
+    display inline-block
+    letter-spacing normal
+
+    width w
+
+    margin-left -(w)
+
+    &:first-child
+      margin-left 0
+
+    for i in 0...n
+      &:nth-child({i+1})
+        transform rotateY(r(i, n)) translateZ(t(w, n))
+
+.roll10
+  roll3d(n: 10, dir: x)
+
+  &.y
+    roll3d(n: 10, dir: y)
